@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bwl7kcd1osjr4"]
+[gd_scene load_steps=10 format=3 uid="uid://bwl7kcd1osjr4"]
 
 [ext_resource type="Script" path="res://chara_1.gd" id="1_dea4n"]
 [ext_resource type="Texture2D" uid="uid://dud3awykp2iei" path="res://art/chara1_atlas.png" id="1_jm77i"]
@@ -16,6 +16,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2i(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-4, 24)]
 }
 
 [sub_resource type="Animation" id="Animation_h4bfd"]
@@ -50,6 +62,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-4, 24), Vector2(0, 24), Vector2(4, 24), Vector2(0, 24)]
 }
 
 [sub_resource type="Animation" id="Animation_1owa3"]
@@ -95,6 +119,9 @@ _data = {
 "walk_forward": SubResource("Animation_1owa3")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nf4lc"]
+size = Vector2(40, 176)
+
 [node name="Chara1" type="CharacterBody2D"]
 script = ExtResource("1_dea4n")
 
@@ -108,3 +135,8 @@ vframes = 4
 libraries = {
 "": SubResource("AnimationLibrary_1i0rx")
 }
+
+[node name="CollisionRect" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 24)
+shape = SubResource("RectangleShape2D_nf4lc")
+debug_color = Color(0.941747, 0.908861, 0.856907, 0.419608)

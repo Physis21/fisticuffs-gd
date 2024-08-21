@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtatg121g685b"]
+
+[ext_resource type="PackedScene" uid="uid://cy34a0oyicfbs" path="res://stage_0.tscn" id="1_5chyj"]
+[ext_resource type="Script" path="res://main.gd" id="1_l3me6"]
+[ext_resource type="PackedScene" uid="uid://bwl7kcd1osjr4" path="res://chara_1.tscn" id="2_gslia"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_l3me6")
+
+[node name="Stage0" parent="." instance=ExtResource("1_5chyj")]
+
+[node name="Chara1" parent="." instance=ExtResource("2_gslia")]
+position = Vector2(200, 200)
+metadata/_edit_group_ = true
