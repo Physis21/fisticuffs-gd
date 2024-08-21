@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bolin5j2s1tpf"]
+
+[ext_resource type="Script" path="res://ressources/ui/hud.gd" id="1_6213v"]
+[ext_resource type="FontFile" uid="uid://bujtjpaa7bf4a" path="res://ressources/fonts/Kenney Pixel Square.ttf" id="1_u58vu"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_6213v")
+
+[node name="Message" type="Label" parent="."]
+offset_top = 88.0
+offset_right = 800.0
+offset_bottom = 248.0
+theme_override_fonts/font = ExtResource("1_u58vu")
+theme_override_font_sizes/font_size = 30
+text = "Simulation info"
+autowrap_mode = 2

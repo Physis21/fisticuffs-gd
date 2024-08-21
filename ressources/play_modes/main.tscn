@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://by2nprtx0o8q1"]
+
+[ext_resource type="PackedScene" uid="uid://cy34a0oyicfbs" path="res://ressources/stages/stage_0.tscn" id="1_g8lun"]
+[ext_resource type="PackedScene" uid="uid://bolin5j2s1tpf" path="res://ressources/ui/hud.tscn" id="2_4it13"]
+[ext_resource type="PackedScene" uid="uid://bwl7kcd1osjr4" path="res://ressources/characters/chara_1.tscn" id="2_ub5ou"]
+[ext_resource type="PackedScene" uid="uid://bgoxvcuy06145" path="res://ressources/characters/training_dummy.tscn" id="3_5yfk3"]
+
+[sub_resource type="GDScript" id="GDScript_7l85o"]
+script/source = "extends Node
+
+@onready var p1_info = $Chara1.export_info
+@onready var p2_info = $TrainingDummy.export_info
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	p1_info = $Chara1.export_info
+	p2_info = $TrainingDummy.export_info
+	$HUD.sys_text = \"player nb = %d
+	p1 info: %s
+	p2_info: %s\" % [$Chara1.player_nb, p1_info, p2_info]
+	
+"
+
+[node name="Main" type="Node"]
+script = SubResource("GDScript_7l85o")
+
+[node name="Stage0" parent="." instance=ExtResource("1_g8lun")]
+
+[node name="HUD" parent="." instance=ExtResource("2_4it13")]
+
+[node name="TrainingDummy" parent="." instance=ExtResource("3_5yfk3")]
+position = Vector2(552, 376)
+
+[node name="Chara1" parent="." instance=ExtResource("2_ub5ou")]
+position = Vector2(200, 200)

@@ -1,11 +1,15 @@
-extends Node
+extends CanvasLayer
 
+@export var sys_text : String = "Simulation info 2"
 
-# Called when the node enters the scene tree for the first time.
+func show_sys_message(text):
+	$SysMessage.text = text
+	$SysMessage.show()
+
 func _ready() -> void:
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	show_sys_message(sys_text)

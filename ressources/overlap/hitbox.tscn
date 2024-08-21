@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvwyd6g08ov6k"]
+
+[ext_resource type="Script" path="res://ressources/overlap/hitbox.gd" id="1_l1cxn"]
+
+[node name="Hitbox" type="Area2D"]
+script = ExtResource("1_l1cxn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+debug_color = Color(0.929358, 0.212393, 0.411078, 0.42)

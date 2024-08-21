@@ -1,7 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://bwl7kcd1osjr4"]
+[gd_scene load_steps=30 format=3 uid="uid://bwl7kcd1osjr4"]
 
-[ext_resource type="Script" path="res://chara_1.gd" id="1_dea4n"]
+[ext_resource type="Script" path="res://ressources/characters/chara_1.gd" id="1_dea4n"]
 [ext_resource type="Texture2D" uid="uid://dud3awykp2iei" path="res://art/chara1_atlas.png" id="1_jm77i"]
+[ext_resource type="PackedScene" uid="uid://dujb23dyuhlei" path="res://ressources/overlap/hurtbox.tscn" id="3_w37ex"]
+[ext_resource type="PackedScene" uid="uid://dvwyd6g08ov6k" path="res://ressources/overlap/hitbox.tscn" id="4_2tx2y"]
 
 [sub_resource type="Animation" id="Animation_mc4ci"]
 length = 0.001
@@ -28,6 +30,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-4, 24)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitboxes/Punch1/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_h4bfd"]
@@ -74,6 +88,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(-4, 24), Vector2(0, 24), Vector2(4, 24), Vector2(0, 24)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hitboxes/Punch1/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_giix8"]
@@ -193,11 +219,16 @@ states/walk_backwards/position = Vector2(510, 191.832)
 states/walk_forward/node = SubResource("AnimationNodeAnimation_2xv2x")
 states/walk_forward/position = Vector2(510, 25.8319)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_o1pqr"), "idle", "walk_forward", SubResource("AnimationNodeStateMachineTransition_x5136"), "walk_forward", "idle", SubResource("AnimationNodeStateMachineTransition_pr2gu"), "idle", "walk_backwards", SubResource("AnimationNodeStateMachineTransition_mj1hm"), "walk_backwards", "idle", SubResource("AnimationNodeStateMachineTransition_nkt24"), "walk_forward", "punch_1", SubResource("AnimationNodeStateMachineTransition_ooa2q"), "punch_1", "walk_forward", SubResource("AnimationNodeStateMachineTransition_sbkf3"), "walk_backwards", "punch_1", SubResource("AnimationNodeStateMachineTransition_g3wnd"), "punch_1", "walk_backwards", SubResource("AnimationNodeStateMachineTransition_nnriq"), "idle", "punch_1", SubResource("AnimationNodeStateMachineTransition_54whd"), "punch_1", "idle", SubResource("AnimationNodeStateMachineTransition_08r30")]
-graph_offset = Vector2(0, -56.1681)
+graph_offset = Vector2(0, -10.7916)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsek8"]
+size = Vector2(88, 176)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vydaj"]
+size = Vector2(80, 40)
 
 [node name="Chara1" type="CharacterBody2D"]
 script = ExtResource("1_dea4n")
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(4, 4)
@@ -222,3 +253,21 @@ parameters/conditions/idle = false
 parameters/conditions/punch_1 = false
 parameters/conditions/walk_backwards = false
 parameters/conditions/walk_forward = false
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_w37ex")]
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(4, 24)
+shape = SubResource("RectangleShape2D_wsek8")
+
+[node name="Hitboxes" type="Area2D" parent="."]
+
+[node name="Punch1" parent="Hitboxes" instance=ExtResource("4_2tx2y")]
+
+[node name="CollisionShape2D" parent="Hitboxes/Punch1" index="0"]
+position = Vector2(72, -20)
+shape = SubResource("RectangleShape2D_vydaj")
+disabled = true
+
+[editable path="Hurtbox"]
+[editable path="Hitboxes/Punch1"]
