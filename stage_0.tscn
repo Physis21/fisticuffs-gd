@@ -13,6 +13,11 @@ size = Vector2(16, 504)
 
 [node name="Stage0" type="Node2D"]
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(400, 250)
+scale = Vector2(1.15, 1.15)
+texture = ExtResource("1_jv6ll")
+
 [node name="Boundaries" type="StaticBody2D" parent="."]
 
 [node name="Floor" type="CollisionShape2D" parent="Boundaries"]
@@ -26,8 +31,3 @@ shape = SubResource("RectangleShape2D_r325r")
 [node name="RightWall" type="CollisionShape2D" parent="Boundaries"]
 position = Vector2(800, 252)
 shape = SubResource("RectangleShape2D_sn3vg")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(400, 250)
-scale = Vector2(1.15, 1.15)
-texture = ExtResource("1_jv6ll")

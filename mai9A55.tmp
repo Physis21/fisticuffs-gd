@@ -11,3 +11,4 @@ script = ExtResource("1_l3me6")
 
 [node name="Chara1" parent="." instance=ExtResource("2_gslia")]
 position = Vector2(200, 200)
+metadata/_edit_group_ = true

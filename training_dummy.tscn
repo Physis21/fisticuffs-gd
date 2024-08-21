@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgoxvcuy06145"]
+
+[ext_resource type="Texture2D" uid="uid://1ibqcmuj5gcs" path="res://art/training_dummy_atlas.png" id="1_y7kcl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j5lqp"]
+radius = 8.0
+height = 36.0
+
+[node name="TrainingDummy" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_y7kcl")
+hframes = 4
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_j5lqp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
