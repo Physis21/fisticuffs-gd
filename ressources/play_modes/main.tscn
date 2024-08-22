@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://by2nprtx0o8q1"]
+[gd_scene load_steps=7 format=3 uid="uid://by2nprtx0o8q1"]
 
 [ext_resource type="PackedScene" uid="uid://cy34a0oyicfbs" path="res://ressources/stages/stage_0.tscn" id="1_g8lun"]
 [ext_resource type="PackedScene" uid="uid://bolin5j2s1tpf" path="res://ressources/ui/hud.tscn" id="2_4it13"]
 [ext_resource type="PackedScene" uid="uid://bwl7kcd1osjr4" path="res://ressources/characters/chara_1.tscn" id="2_ub5ou"]
 [ext_resource type="PackedScene" uid="uid://bgoxvcuy06145" path="res://ressources/characters/training_dummy.tscn" id="3_5yfk3"]
+[ext_resource type="AudioStream" uid="uid://c2rqtn01ce5ws" path="res://ressources/music/combat_cirque_rank_1.mp3" id="5_xgrr1"]
 
 [sub_resource type="GDScript" id="GDScript_7l85o"]
 script/source = "extends Node
@@ -13,7 +14,7 @@ script/source = "extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$BackgroundMusic.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,3 +39,7 @@ position = Vector2(552, 376)
 
 [node name="Chara1" parent="." instance=ExtResource("2_ub5ou")]
 position = Vector2(200, 200)
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_xgrr1")
+parameters/looping = true
