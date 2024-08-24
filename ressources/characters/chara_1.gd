@@ -66,7 +66,7 @@ func update_animation_parameters():
 func _process(delta: float) -> void:
 	update_animation_parameters()
 	#export_info = "hitbox layer 4: %s" % hitboxes.get_collision_layer_value(4)
-	export_info = "punch_1 = %s" % animation_tree["parameters/conditions/punch_1"]
+	export_info = "position = %s" % $CollisionRect.position
 
 func _physics_process(delta: float) -> void:
 		# Add the gravity.
@@ -78,6 +78,8 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		if facing == "left":
 			$Sprite2D.flip_h = true
+			$Hitboxes/Punch1/CollisionShape2D.position.x *= -1
+			# doesn't work properly
 		else:
 			$Sprite2D.flip_h = false
 		if Input.is_action_just_pressed("move_up"):

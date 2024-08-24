@@ -3,6 +3,8 @@ extends ProgressBar
 @onready var timer = $Timer
 @onready var damage_bar = $DamageBar
 
+@export var player_nb = 2
+
 signal health_zero
 
 var health = 0 : set = _set_health
@@ -28,7 +30,7 @@ func init_health(_health):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

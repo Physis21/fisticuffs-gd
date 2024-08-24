@@ -40,6 +40,10 @@ func _ready() -> void:
 	healthbar.init_health(hp)
 	
 func _process(delta: float) -> void:
+	if facing == "left":
+		$Sprite2D.flip_h = false
+	else:
+		$Sprite2D.flip_h = true
 	update_animation_parameters()
 	export_info = healthbar.value
 	animation_tree["parameters/conditions/idle"] = true

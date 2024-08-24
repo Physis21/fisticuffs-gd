@@ -15,15 +15,29 @@ script/source = "extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$BackgroundMusic.play()
+	$Chara1.facing = \"right\"
+	$Chara1.player_nb = 1
+	$TrainingDummy.facing = \"left\"
+	$TrainingDummy.player_nb = 2
+	$TrainingDummy/CanvasLayer/Healthbar.position.x = 500
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	p1_info = $Chara1.export_info
+	p1_info = $Chara1.position.x
 	p2_info = $TrainingDummy.export_info
 	$HUD.sys_text = \"player nb = %d
 	p1 info: %s
 	p2_info: %s\" % [$Chara1.player_nb, p1_info, p2_info]
+	
+func _physics_process(delta: float) -> void:
+	if $Chara1.position.x > $TrainingDummy.position.x:
+		$Chara1.facing = \"left\"
+		$TrainingDummy.facing = \"right\"
+	else:
+		$Chara1.facing = \"right\"
+		$TrainingDummy.facing = \"left\"
+	
 	
 "
 
