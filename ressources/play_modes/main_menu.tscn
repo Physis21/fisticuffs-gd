@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5yuxdxhjjgaj"]
+
+[ext_resource type="FontFile" uid="uid://bujtjpaa7bf4a" path="res://ressources/fonts/Kenney Pixel Square.ttf" id="1_yq2nf"]
+
+[node name="MainMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="MenuOptions" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Training" type="Label" parent="HBoxContainer/VBoxContainer/MenuOptions"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yq2nf")
+theme_override_font_sizes/font_size = 30
+text = "Training"
+
+[node name="Options" type="Label" parent="HBoxContainer/VBoxContainer/MenuOptions"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yq2nf")
+theme_override_font_sizes/font_size = 30
+text = "Options"
+
+[node name="Exit" type="Label" parent="HBoxContainer/VBoxContainer/MenuOptions"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yq2nf")
+theme_override_font_sizes/font_size = 30
+text = "Exit"
+
+[node name="Version" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yq2nf")
+theme_override_font_sizes/font_size = 20
+text = "v0.0
+"
+
+[node name="Developer" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yq2nf")
+theme_override_font_sizes/font_size = 20
+text = "By Physis"
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+
+[node name="Label" type="Label" parent="HBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_yq2nf")
+theme_override_font_sizes/font_size = 40
+text = "Fistycuffs"

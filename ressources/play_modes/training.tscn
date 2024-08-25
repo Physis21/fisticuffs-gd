@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://by2nprtx0o8q1"]
 
-[ext_resource type="PackedScene" uid="uid://cy34a0oyicfbs" path="res://ressources/stages/stage_0.tscn" id="1_g8lun"]
-[ext_resource type="PackedScene" uid="uid://bolin5j2s1tpf" path="res://ressources/ui/hud.tscn" id="2_4it13"]
-[ext_resource type="PackedScene" uid="uid://bwl7kcd1osjr4" path="res://ressources/characters/chara_1.tscn" id="2_ub5ou"]
-[ext_resource type="PackedScene" uid="uid://bgoxvcuy06145" path="res://ressources/characters/training_dummy.tscn" id="3_5yfk3"]
-[ext_resource type="AudioStream" uid="uid://c2rqtn01ce5ws" path="res://ressources/music/combat_cirque_rank_1.mp3" id="5_xgrr1"]
+[ext_resource type="PackedScene" uid="uid://cy34a0oyicfbs" path="res://ressources/stages/stage_0.tscn" id="1_fjc3j"]
+[ext_resource type="PackedScene" uid="uid://bolin5j2s1tpf" path="res://ressources/ui/hud.tscn" id="2_dh0w4"]
+[ext_resource type="PackedScene" uid="uid://bgoxvcuy06145" path="res://ressources/characters/training_dummy.tscn" id="3_qistn"]
+[ext_resource type="PackedScene" uid="uid://bwl7kcd1osjr4" path="res://ressources/characters/chara_1.tscn" id="4_aiu3k"]
+[ext_resource type="AudioStream" uid="uid://c2rqtn01ce5ws" path="res://ressources/music/combat_cirque_rank_1.mp3" id="5_ki1bc"]
 
 [sub_resource type="GDScript" id="GDScript_7l85o"]
 script/source = "extends Node
@@ -52,21 +52,21 @@ func _on_dummy_hurtbox_exited(area: Area2D) -> void:
 	print(\"hurtbox exitted!\")
 "
 
-[node name="Main" type="Node"]
+[node name="Training" type="Node"]
 script = SubResource("GDScript_7l85o")
 
-[node name="Stage0" parent="." instance=ExtResource("1_g8lun")]
+[node name="Stage0" parent="." instance=ExtResource("1_fjc3j")]
 
-[node name="HUD" parent="." instance=ExtResource("2_4it13")]
+[node name="HUD" parent="." instance=ExtResource("2_dh0w4")]
 
-[node name="TrainingDummy" parent="." instance=ExtResource("3_5yfk3")]
+[node name="TrainingDummy" parent="." instance=ExtResource("3_qistn")]
 position = Vector2(552, 376)
 
-[node name="Chara1" parent="." instance=ExtResource("2_ub5ou")]
+[node name="Chara1" parent="." instance=ExtResource("4_aiu3k")]
 position = Vector2(200, 200)
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_xgrr1")
+stream = ExtResource("5_ki1bc")
 parameters/looping = true
 
 [connection signal="area_entered" from="TrainingDummy/Hurtbox" to="." method="_on_dummy_hurtbox_entered"]
