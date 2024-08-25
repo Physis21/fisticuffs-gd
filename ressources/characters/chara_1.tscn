@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://bwl7kcd1osjr4"]
+[gd_scene load_steps=31 format=3 uid="uid://bwl7kcd1osjr4"]
 
 [ext_resource type="Script" path="res://ressources/characters/chara_1.gd" id="1_dea4n"]
 [ext_resource type="Texture2D" uid="uid://dud3awykp2iei" path="res://art/chara1_atlas.png" id="1_jm77i"]
 [ext_resource type="PackedScene" uid="uid://dujb23dyuhlei" path="res://ressources/overlap/hurtbox.tscn" id="3_w37ex"]
 [ext_resource type="PackedScene" uid="uid://dvwyd6g08ov6k" path="res://ressources/overlap/hitbox.tscn" id="4_2tx2y"]
+[ext_resource type="PackedScene" uid="uid://cstj4frf262w6" path="res://ressources/ui/healthbar.tscn" id="5_rcxvl"]
 
 [sub_resource type="Animation" id="Animation_mc4ci"]
 length = 0.001
@@ -269,5 +270,10 @@ position = Vector2(72, -20)
 shape = SubResource("RectangleShape2D_vydaj")
 disabled = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Healthbar" parent="CanvasLayer" instance=ExtResource("5_rcxvl")]
+
 [editable path="Hurtbox"]
 [editable path="Hitboxes/Punch1"]
+[editable path="CanvasLayer/Healthbar"]

@@ -37,8 +37,19 @@ func _physics_process(delta: float) -> void:
 	else:
 		$Chara1.facing = \"right\"
 		$TrainingDummy.facing = \"left\"
-	
-	
+
+
+func _on_dummy_hurtbox_entered(area: Area2D) -> void:
+	print(\"training dummy hit!\")
+	if area == $Chara1/Hitboxes/Punch1:
+		$TrainingDummy.hp -= $Chara1.attack_values[\"punch_1\"]
+	$TrainingDummy/CanvasLayer/Healthbar.health = $TrainingDummy.hp
+	$TrainingDummy/AnimationTree[\"parameters/conditions/hit\"] = true
+
+
+func _on_dummy_hurtbox_exited(area: Area2D) -> void:
+	$TrainingDummy/AnimationTree[\"parameters/conditions/hit\"] = false
+	print(\"hurtbox exitted!\")
 "
 
 [node name="Main" type="Node"]
@@ -57,3 +68,10 @@ position = Vector2(200, 200)
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_xgrr1")
 parameters/looping = true
+
+[connection signal="area_entered" from="TrainingDummy/Hurtbox" to="." method="_on_dummy_hurtbox_entered"]
+[connection signal="area_exited" from="TrainingDummy/Hurtbox" to="." method="_on_dummy_hurtbox_exited"]
+
+[editable path="TrainingDummy"]
+[editable path="TrainingDummy/Hurtbox"]
+[editable path="TrainingDummy/CanvasLayer/Healthbar"]
