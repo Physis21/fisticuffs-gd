@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5yuxdxhjjgaj"]
+[gd_scene load_steps=3 format=3 uid="uid://b5yuxdxhjjgaj"]
 
+[ext_resource type="Script" path="res://ressources/play_modes/main_menu.gd" id="1_horfr"]
 [ext_resource type="FontFile" uid="uid://bujtjpaa7bf4a" path="res://ressources/fonts/Kenney Pixel Square.ttf" id="1_yq2nf"]
 
 [node name="MainMenu" type="MarginContainer"]
@@ -12,6 +13,7 @@ theme_override_constants/margin_left = 120
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 120
 theme_override_constants/margin_bottom = 40
+script = ExtResource("1_horfr")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -25,19 +27,19 @@ size_flags_vertical = 3
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="Training" type="Label" parent="HBoxContainer/VBoxContainer/MenuOptions"]
+[node name="TrainingButton" type="Button" parent="HBoxContainer/VBoxContainer/MenuOptions"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_yq2nf")
 theme_override_font_sizes/font_size = 30
 text = "Training"
 
-[node name="Options" type="Label" parent="HBoxContainer/VBoxContainer/MenuOptions"]
+[node name="OptionsButton" type="Button" parent="HBoxContainer/VBoxContainer/MenuOptions"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_yq2nf")
 theme_override_font_sizes/font_size = 30
 text = "Options"
 
-[node name="Exit" type="Label" parent="HBoxContainer/VBoxContainer/MenuOptions"]
+[node name="ExitButton" type="Button" parent="HBoxContainer/VBoxContainer/MenuOptions"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_yq2nf")
 theme_override_font_sizes/font_size = 30
@@ -65,3 +67,6 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_yq2nf")
 theme_override_font_sizes/font_size = 40
 text = "Fistycuffs"
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/MenuOptions/TrainingButton" to="." method="_on_training_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/MenuOptions/ExitButton" to="." method="_on_exit_button_pressed"]
